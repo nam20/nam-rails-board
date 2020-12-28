@@ -1,0 +1,8 @@
+<br>
+<form action="/post/<%= @post.id %>" method="post">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <h2><input type="text" name="title" value="<%= @post.title %>"></h2>
+  <h2><input type="text" name="content" value="<%= @post.content %>"></h2>
+  <h2><input type="submit"></h2>
+</form>
+<h3><a href="/">홈</a></h3>

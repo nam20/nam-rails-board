@@ -1,0 +1,19 @@
+<br>
+<% @posts.each do |post| %>
+  <h3>제목: <%= post.title %> <a href="/post/<%= post.id %>/edit">수정하기</a></h3>
+  <h3>내용: <%= post.content %> <a href="/post/<%= post.id %>/delete">삭제하기</a></h3>
+  <hr>
+<% end %>
+
+
+
+
+
+<% if session[:user_id].nil? %>
+  <h3><a href="/user/join">회원가입</a></h3>
+  <h3><a href="/user/login">로그인</a></h3>
+<% else %>
+  <h3><a href="/post/new">글쓰기</a></h3>
+  <h3><%= session[:user_id] %></h3>
+  <h3><a href="/user/logout">로그아웃</a></h3>
+<% end %>
