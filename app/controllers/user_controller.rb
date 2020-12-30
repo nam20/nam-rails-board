@@ -18,12 +18,11 @@ class UserController < ApplicationController
     user.password_confirmation = params[:password_confirmation]
 
 
-
     if user.save
       session[:user_id] = user.id
       redirect_to '/'
     else
-      redirect_to '/user/login'
+      redirect_to '/user/join'
     end
 
   end

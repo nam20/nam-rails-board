@@ -1,0 +1,51 @@
+<br>
+<h3>글쓴이: <%= @post.user.name %></h3>
+<h3>제목: <%= @post.title %> </h3>
+<h3>내용: <%= @post.content %> </h3>
+
+<% if @post.image.attached? %>
+  <%= image_tag url_for(@post.image) %>
+<% end %>
+
+<h3>좋아요 <%= @post.likes.size %></h3>
+
+<% if session[:user_id] %>
+
+  <% if @post.likes.detect { |like| like.user_id == session[:user_id] } %>
+    <h4><%= link_to '좋아요 취소', "/post/#{@post.id}/unlike/#{session[:user_id]}", method: 'post' %></h4>
+  <% else %>
+    <h4><%= link_to '좋아요 누르기', "/post/#{@post.id}/like/#{session[:user_id]}", method: 'post' %></h4>
+  <% end %>
+
+  <% if session[:user_id] == @post.user_id %>
+    <a href="/post/<%= @post.id %>/edit">수정하기</a>
+    <%= link_to "삭제하기", "/post/#{@post.id}", method: 'delete' %>
+
+  <% end %>
+<% end %>
+
+<h3><a href="/">홈</a></h3>
+
+<% if session[:user_id] %>
+  <form action="/comment/<%= @post.id %>" method="post">
+    <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+    <input type="text" name="content" placeholder="댓글"><input type="submit">
+  </form>
+<% end %>
+
+<hr>
+
+
+<% @comments.each do |comment| %>
+  <h3>
+    <%= "=>" * (comment.depth)  %>
+    <%= "번호: #{comment.id} 글쓴이: #{comment.user.name} 내용: #{comment.content}" %>
+    <%= "-------  대댓글 순서 : #{comment.group_order}" %>
+    <form action="/comment/<%= "#{@post.id}/re/#{comment.id}" %>" method="post">
+      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+      <input type="text" name="content" placeholder="대댓글"><input type="submit">
+    </form>
+    <%= link_to "삭제하기", "/comment/#{comment.id}", method: 'delete' %>
+  </h3>
+  <hr>
+<% end %>

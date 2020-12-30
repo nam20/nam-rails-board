@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="34020aef-e243-4acb-9aca-61580b5d7d94" name="디폴트 변경 목록" comment="" />
+    <list default="true" id="34020aef-e243-4acb-9aca-61580b5d7d94" name="디폴트 변경 목록" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/post_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/post_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/post.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/post.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/user.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/post/edit.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/post/edit.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/post/new.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/post/new.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/user/join.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/user/join.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/user/login.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/user/login.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201228051220_create_posts.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20201228051220_create_posts.rb" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -56,7 +70,11 @@
       <updated>1609130717823</updated>
       <workItem from="1609130718981" duration="632000" />
       <workItem from="1609131552638" duration="582000" />
-      <workItem from="1609132153129" duration="12514000" />
+      <workItem from="1609132153129" duration="13215000" />
+      <workItem from="1609200885473" duration="12480000" />
+      <workItem from="1609217967534" duration="11333000" />
+      <workItem from="1609232965993" duration="167000" />
+      <workItem from="1609286392341" duration="10598000" />
     </task>
     <servers />
   </component>
