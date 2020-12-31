@@ -20,6 +20,7 @@
   <% if session[:user_id] == @post.user_id %>
     <a href="/post/<%= @post.id %>/edit">수정하기</a>
     <%= link_to "삭제하기", "/post/#{@post.id}", method: 'delete' %>
+    <%= link_to "삭제하기(임시)", "/post/#{@post.id}/delete", method: 'delete' %>
 
   <% end %>
 <% end %>
@@ -35,17 +36,23 @@
 
 <hr>
 
-
 <% @comments.each do |comment| %>
   <h3>
     <%= "=>" * (comment.depth)  %>
     <%= "번호: #{comment.id} 글쓴이: #{comment.user.name} 내용: #{comment.content}" %>
     <%= "-------  대댓글 순서 : #{comment.group_order}" %>
-    <form action="/comment/<%= "#{@post.id}/re/#{comment.id}" %>" method="post">
-      <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-      <input type="text" name="content" placeholder="대댓글"><input type="submit">
-    </form>
-    <%= link_to "삭제하기", "/comment/#{comment.id}", method: 'delete' %>
+
+    <% if session[:user_id] %>
+      <form action="<%= "/comment/#{@post.id}/re/#{comment.id}" %>" method="post">
+        <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+        <input type="text" name="content" placeholder="대댓글"><input type="submit">
+      </form>
+
+      <% if comment.user_id == session[:user_id] %>
+        <%= link_to "삭제하기", "/comment/#{comment.id}", method: 'delete' %>
+      <% end %>
+    <% end %>
+
   </h3>
   <hr>
 <% end %>

@@ -1,11 +1,13 @@
 <br>
-<% if session[:user_id].nil? %>
-  <h3><a href="/user/join">회원가입</a></h3>
-  <h3><a href="/user/login">로그인</a></h3>
-<% else %>
+<% if session[:user_id] %>
   <h3><a href="/post/new">글쓰기</a></h3>
   <h3><a href="/user/logout">로그아웃</a></h3>
+<% else %>
+  <h3><a href="/user/join">회원가입</a></h3>
+  <h3><a href="/user/login">로그인</a></h3>
 <% end %>
+
+<h3><%= "접속 유저 이름: #{@user.name}" if @user %></h3>
 
 <hr>
 <% @posts.each do |post| %>

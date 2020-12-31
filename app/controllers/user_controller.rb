@@ -36,8 +36,8 @@ class UserController < ApplicationController
     if user.nil?
       redirect_to '/user/login'
     else
-      if auth = user.authenticate(params[:password])
-        session[:user_id] = auth.id
+      if user.authenticate(params[:password])
+        session[:user_id] = user.id
         redirect_to '/'
       else
         redirect_to '/user/login'

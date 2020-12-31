@@ -11,10 +11,10 @@ class CommentController < ApplicationController
     comment = Comment.new
 
     if params[:comment_id]
-      co = Comment.find(params[:comment_id])
+      parent_comment = Comment.find(params[:comment_id])
       sort_comments = Comment
-                             .where(post_id: params[:post_id], group_id: co.group_id)
-                             .where("group_order > #{co.group_order}")
+                             .where(post_id: params[:post_id], group_id: parent_comment.group_id)
+                             .where("group_order > #{parent_comment.group_order}")
 
 
       sort_comments.scoping do
@@ -31,12 +31,12 @@ class CommentController < ApplicationController
        # end
 
 
-      comment.group_id = co.group_id
-      comment.group_order = co.group_order + 1
-      comment.depth = co.depth + 1
+      comment.group_id = parent_comment.group_id
+      comment.group_order = parent_comment.group_order + 1
+      comment.depth = parent_comment.depth + 1
     else
-      co = Comment.where(post_id: post.id).order(:group_id).last
-      comment.group_id = (co && co.group_id || 0) + 1
+      last_comment = Comment.where(post_id: post.id).order(:group_id).last
+      comment.group_id = (last_comment && last_comment.group_id || 0) + 1
       comment.group_order = 0
       comment.depth = 0
     end
@@ -54,7 +54,7 @@ class CommentController < ApplicationController
     user = User.find(session[:user_id])
     comment = Comment.find(params[:comment_id])
 
-    if(user.nil? || comment.nil?)
+    if(user.nil? || comment.nil? || user.id != comment.user_id)
       redirect_to '/'
       return
     end

@@ -1,11 +1,11 @@
 class PostController < ApplicationController
 
   def post
-    @post = Post.find(params[:post_id])
+    @post = Post.includes(:user).find(params[:post_id])
 
     @comments = Comment.includes(:user)
                        .where( post_id: params[:post_id] )
-                       .order(:group_id => :desc , :group_order => :asc)
+                       .order(group_id: :desc , group_order: :asc)
   end
 
   def new
