@@ -3,17 +3,6 @@ Rails.application.routes.draw do
 
   get '/' => 'home#index'
 
-  get '/post/new' => 'post#new'
-  post '/post' => 'post#create'
-
-  get '/post/:post_id' => 'post#post'
-
-  get '/post/:post_id/edit' => 'post#edit'
-  post '/post/:post_id' => 'post#update'
-
-  get '/post/:post_id/delete' => 'post#delete'   # link_to (임시)
-  delete '/post/:post_id' => 'post#delete'
-
   get '/user/join' => 'user#join'
   post '/user' => 'user#create'
 
@@ -22,11 +11,29 @@ Rails.application.routes.draw do
 
   get '/user/logout' => 'user#logout'
 
-  post '/post/:post_id/like/:user_id' => 'post#like'
-  post '/post/:post_id/unlike/:user_id' => 'post#unlike'
+  post '/user/:user_id/follow' => 'user#follow'
+  get '/user/:user_id/follow' => 'user#follow'
 
-  get '/post/:post_id/like/:user_id' => 'post#like'  # link_to (임시)
-  get '/post/:post_id/unlike/:user_id' => 'post#unlike' # link_to (임시)
+  post '/user/:user_id/unfollow' => 'user#unfollow'
+  get '/user/:user_id/unfollow' => 'user#unfollow'
+
+  get '/post/new' => 'post#new'
+  post '/post' => 'post#create'
+
+  get '/post/:post_id' => 'post#show'
+
+  get '/post/:post_id/edit' => 'post#edit'
+  post '/post/:post_id' => 'post#update'
+
+  get '/post/:post_id/delete' => 'post#delete'   # link_to (임시)
+  delete '/post/:post_id' => 'post#delete'
+
+  post '/post/:post_id/like' => 'post#like'
+  post '/post/:post_id/unlike' => 'post#unlike'
+
+  get '/post/:post_id/like' => 'post#like'  # link_to (임시)
+  get '/post/:post_id/unlike' => 'post#unlike' # link_to (임시)
+
 
 
 

@@ -1,9 +1,9 @@
 class CommentController < ApplicationController
   def create
-    user = User.find(session[:user_id])
-    post = Post.find(params[:post_id])
 
-    if(user.nil? || post.nil?)
+    post = Post.find_by(id: params[:post_id])
+
+    if session[:user_id].nil? || post.nil?
       redirect_to '/'
       return
     end
@@ -11,25 +11,20 @@ class CommentController < ApplicationController
     comment = Comment.new
 
     if params[:comment_id]
-      parent_comment = Comment.find(params[:comment_id])
+      parent_comment = Comment.find_by(id: params[:comment_id])
+
+      if parent_comment.nil?
+        redirect_to '/'
+        return
+      end
+
       sort_comments = Comment
                              .where(post_id: params[:post_id], group_id: parent_comment.group_id)
                              .where("group_order > #{parent_comment.group_order}")
 
-
       sort_comments.scoping do
         Comment.update_all("group_order = group_order + 1")
       end
-
-
-
-      #sort_comments.update()
-
-       # sort_comments.each do |comment|
-       #   comment.increment(:group_order, 1)
-       #   comment.save
-       # end
-
 
       comment.group_id = parent_comment.group_id
       comment.group_order = parent_comment.group_order + 1
@@ -42,8 +37,9 @@ class CommentController < ApplicationController
     end
 
     comment.content = params[:content]
-    comment.user_id = user.id
+    comment.user_id = session[:user_id]
     comment.post_id = post.id
+    comment.is_deleted = false
 
     comment.save
 
@@ -51,15 +47,15 @@ class CommentController < ApplicationController
   end
 
   def delete
-    user = User.find(session[:user_id])
-    comment = Comment.find(params[:comment_id])
 
-    if(user.nil? || comment.nil? || user.id != comment.user_id)
+    comment = Comment.find_by(id: params[:comment_id])
+
+    if session[:user_id].nil? || comment.nil? || session[:user_id] != comment.user_id
       redirect_to '/'
       return
     end
 
-    Comment.destroy(params[:comment_id])
+    comment.update(is_deleted: true)
 
     redirect_to "/post/#{comment.post_id}"
   end

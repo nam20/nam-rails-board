@@ -7,6 +7,7 @@ class CreateComments < ActiveRecord::Migration[6.1]
       t.integer :group_id
       t.integer :group_order
       t.integer :depth
+      t.boolean :is_deleted
 
       t.timestamps
     end

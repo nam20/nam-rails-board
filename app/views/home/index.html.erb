@@ -1,17 +1,32 @@
 <br>
-<% if session[:user_id] %>
+<% if @user %>
   <h3><a href="/post/new">글쓰기</a></h3>
   <h3><a href="/user/logout">로그아웃</a></h3>
+  <h3><%= "접속 유저 이름: #{@user.name}" %></h3>
+  <h3><%= "팔로워: #{@user.followers.size} 팔로잉: #{@user.followings.size}" %></h3>
 <% else %>
   <h3><a href="/user/join">회원가입</a></h3>
   <h3><a href="/user/login">로그인</a></h3>
 <% end %>
 
-<h3><%= "접속 유저 이름: #{@user.name}" if @user %></h3>
 
 <hr>
 <% @posts.each do |post| %>
-  <h3>글쓴이: <%= post.user.name %></h3>
+  <% if post.user.is_deleted %>
+    <h3>(탈퇴한 유저)</h3>
+  <% else %>
+    <h3>글쓴이: <%= post.user.name %>
+      <% post_user_id = post.user.id %>
+      <% if @user && @user.id != post_user_id %>
+        <% if @user.followings.detect {|following| following.id == post_user_id } %>
+          <%= link_to "언팔로우", "/user/#{post_user_id}/unfollow", method: :post %>
+        <% else %>
+          <%= link_to "팔로우", "/user/#{post_user_id}/follow", method: :post %>
+        <% end %>
+      <% end %>
+    </h3>
+  <% end %>
+
   <h3>제목: <%= link_to post.title, "/post/#{post.id}" %></h3>
   <h3>내용: <%= post.content %> </h3>
   <hr>

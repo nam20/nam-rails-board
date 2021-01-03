@@ -1,6 +1,6 @@
 class PostController < ApplicationController
 
-  def post
+  def show
     @post = Post.includes(:user).find(params[:post_id])
 
     @comments = Comment.includes(:user)
@@ -14,7 +14,7 @@ class PostController < ApplicationController
 
   def create
 
-    unless user = User.find(session[:user_id])
+    if session[:user_id].nil?
       redirect_to '/'
       return
     end
@@ -23,7 +23,8 @@ class PostController < ApplicationController
     post.title = params[:title]
     post.content = params[:content]
     post.image = params[:image] if params[:image]
-    post.user_id = user.id
+    post.user_id = session[:user_id]
+    post.is_deleted = false
 
     post.save
 
@@ -36,10 +37,10 @@ class PostController < ApplicationController
   end
 
   def update
-    user = User.find(session[:user_id])
-    post = Post.find(params[:post_id])
 
-    if(user.id != post.user_id || user.nil? || post.nil?)
+    post = Post.find_by(id: params[:post_id])
+
+    if session[:user_id].nil? || (session[:user_id] != post.user_id)
       redirect_to '/'
       return
     end
@@ -54,15 +55,15 @@ class PostController < ApplicationController
   end
 
   def delete
-    user = User.find(session[:user_id])
-    post = Post.find(params[:post_id])
 
-    if(user.id != post.user_id || user.nil? || post.nil?)
+    post = Post.find_by(id: params[:post_id])
+
+    if session[:user_id].nil? || (session[:user_id] != post.user_id)
       redirect_to '/'
       return
     end
 
-    Post.destroy(params[:post_id])
+    post.update(is_deleted: true)
 
     redirect_to '/'
   end
@@ -73,14 +74,13 @@ class PostController < ApplicationController
       return
     end
 
-
-    if Like.find_by(user_id: params[:user_id], post_id: params[:post_id])
+    if Like.find_by(user_id: session[:user_id], post_id: params[:post_id])
       redirect_to '/'
       return
     end
 
     like = Like.new
-    like.user_id = params[:user_id]
+    like.user_id = session[:user_id]
     like.post_id = params[:post_id]
     like.save
 
@@ -94,8 +94,7 @@ class PostController < ApplicationController
       return
     end
 
-
-    unless like = Like.find_by(user_id: params[:user_id], post_id: params[:post_id])
+    unless like = Like.find_by(user_id: session[:user_id], post_id: params[:post_id])
       redirect_to '/'
       return
     end

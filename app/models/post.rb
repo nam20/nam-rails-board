@@ -3,8 +3,8 @@ class Post < ApplicationRecord
 
   belongs_to :user
 
-  has_many :likes, dependent: :delete_all
-  has_many :users, through: :likes
+  has_many :likes
+  has_many :likers, through: :likes, source: :user
 
-  has_many :comments, dependent: :delete_all
+  has_many :comments
 end

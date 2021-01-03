@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_12_30_000232) do
+ActiveRecord::Schema.define(version: 2021_01_03_060523) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -47,10 +47,18 @@ ActiveRecord::Schema.define(version: 2020_12_30_000232) do
     t.integer "group_id"
     t.integer "group_order"
     t.integer "depth"
+    t.boolean "is_deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["post_id"], name: "index_comments_on_post_id"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.integer "follower_id"
+    t.integer "following_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "likes", force: :cascade do |t|
@@ -67,6 +75,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_000232) do
     t.string "content"
     t.string "image"
     t.integer "user_id"
+    t.boolean "is_deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_posts_on_user_id"
@@ -76,6 +85,7 @@ ActiveRecord::Schema.define(version: 2020_12_30_000232) do
     t.string "name"
     t.string "email"
     t.string "password_digest"
+    t.boolean "is_deleted"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
