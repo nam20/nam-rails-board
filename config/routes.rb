@@ -3,36 +3,45 @@ Rails.application.routes.draw do
 
   get '/' => 'home#index'
 
-  get '/user/join' => 'user#join'
-  post '/user' => 'user#create'
+  get '/join' => 'join#join'
+  post '/join' => 'join#create'
 
-  get '/user/login' => 'user#login'
-  post '/user/login' => 'user#find'
 
-  get '/user/logout' => 'user#logout'
 
-  post '/user/:user_id/follow' => 'user#follow'
-  get '/user/:user_id/follow' => 'user#follow'
+  get '/session/login' => 'session#login'
+  post '/session/login' => 'session#find'
 
-  post '/user/:user_id/unfollow' => 'user#unfollow'
-  get '/user/:user_id/unfollow' => 'user#unfollow'
+  get '/session/logout' => 'session#logout'
+
+
+
+  post '/follow/:id' => 'follow#follow'
+  get '/follow/:id' => 'follow#follow'
+
+  post '/unfollow/:id' => 'follow#unfollow'
+  get '/unfollow/:id' => 'follow#unfollow'
+
+
 
   get '/post/new' => 'post#new'
   post '/post' => 'post#create'
 
-  get '/post/:post_id' => 'post#show'
+  get '/post/:id' => 'post#show'
 
-  get '/post/:post_id/edit' => 'post#edit'
-  post '/post/:post_id' => 'post#update'
+  get '/post/:id/edit' => 'post#edit'
+  post '/post/:id' => 'post#update'
 
-  get '/post/:post_id/delete' => 'post#delete'   # link_to (임시)
-  delete '/post/:post_id' => 'post#delete'
+  get '/post/:id/delete' => 'post#delete'   # link_to (임시)
+  delete '/post/:id/delete' => 'post#delete'
+  delete '/post/:id' => 'post#delete'
 
-  post '/post/:post_id/like' => 'post#like'
-  post '/post/:post_id/unlike' => 'post#unlike'
 
-  get '/post/:post_id/like' => 'post#like'  # link_to (임시)
-  get '/post/:post_id/unlike' => 'post#unlike' # link_to (임시)
+
+  post '/like/:id' => 'like#like'
+  post '/unlike/:id' => 'like#unlike'
+
+  get '/like/:id' => 'like#like'  # link_to (임시)
+  get '/unlike/:id' => 'like#unlike' # link_to (임시)
 
 
 
@@ -40,9 +49,9 @@ Rails.application.routes.draw do
   post '/comment/:post_id' => 'comment#create'
   post '/comment/:post_id/re/:comment_id' => 'comment#create'
 
-  delete '/comment/:comment_id' => 'comment#delete'
+  delete '/comment/:id' => 'comment#delete'
 
-  get '/comment/:comment_id' => 'comment#delete'  # link_to (임시)
+  get '/comment/:id' => 'comment#delete'  # link_to (임시)
 
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

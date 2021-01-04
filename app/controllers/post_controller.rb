@@ -1,28 +1,23 @@
 class PostController < ApplicationController
 
+  before_action :authenticate_user, only: [:new, :create, :edit, :update, :delete]
+  before_action :set_post, only: [:edit, :update, :delete]
+
   def show
-    @post = Post.includes(:user).find(params[:post_id])
+    @post = Post.includes(:user).find(params[:id])
 
     @comments = Comment.includes(:user)
-                       .where( post_id: params[:post_id] )
+                       .where( post_id: params[:id] )
                        .order(group_id: :desc , group_order: :asc)
   end
 
   def new
-    redirect_to '/' if session[:user_id].nil?
   end
 
   def create
 
-    if session[:user_id].nil?
-      redirect_to '/'
-      return
-    end
+    post = Post.new(post_params)
 
-    post = Post.new
-    post.title = params[:title]
-    post.content = params[:content]
-    post.image = params[:image] if params[:image]
     post.user_id = session[:user_id]
     post.is_deleted = false
 
@@ -32,76 +27,38 @@ class PostController < ApplicationController
   end
 
   def edit
-    redirect_to '/' if session[:user_id].nil?
-    @post = Post.find(params[:post_id])
   end
 
   def update
 
-    post = Post.find_by(id: params[:post_id])
-
-    if session[:user_id].nil? || (session[:user_id] != post.user_id)
-      redirect_to '/'
-      return
-    end
-
-    post.title = params[:title]
-    post.content = params[:content]
-    post.image = params[:image] if params[:image]
-
-    post.save
+    @post.update(post_params)
 
     redirect_to '/'
   end
 
   def delete
 
-    post = Post.find_by(id: params[:post_id])
-
-    if session[:user_id].nil? || (session[:user_id] != post.user_id)
-      redirect_to '/'
-      return
-    end
-
-    post.update(is_deleted: true)
+    @post.update(is_deleted: true)
 
     redirect_to '/'
   end
 
-  def like
-    if session[:user_id].nil?
-      redirect_to '/'
-      return
-    end
 
-    if Like.find_by(user_id: session[:user_id], post_id: params[:post_id])
-      redirect_to '/'
-      return
-    end
+  private
 
-    like = Like.new
-    like.user_id = session[:user_id]
-    like.post_id = params[:post_id]
-    like.save
-
-    redirect_to "/post/#{params[:post_id]}"
-
+  def authenticate_user
+    redirect_to '/' if session[:user_id].nil?
   end
 
-  def unlike
-    if session[:user_id].nil?
-      redirect_to '/'
-      return
-    end
+  def set_post
+    @post = Post.find_by(id: params[:id])
 
-    unless like = Like.find_by(user_id: session[:user_id], post_id: params[:post_id])
-      redirect_to '/'
-      return
-    end
-
-    Like.destroy(like.id)
-
-    redirect_to "/post/#{params[:post_id]}"
+    redirect_to '/' if session[:user_id] != @post.user_id
   end
+
+  def post_params
+    params.permit(:title, :content, :image)
+  end
+
 
 end

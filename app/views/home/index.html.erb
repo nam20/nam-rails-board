@@ -1,12 +1,12 @@
 <br>
 <% if @user %>
   <h3><a href="/post/new">글쓰기</a></h3>
-  <h3><a href="/user/logout">로그아웃</a></h3>
+  <h3><a href="/session/logout">로그아웃</a></h3>
   <h3><%= "접속 유저 이름: #{@user.name}" %></h3>
   <h3><%= "팔로워: #{@user.followers.size} 팔로잉: #{@user.followings.size}" %></h3>
 <% else %>
-  <h3><a href="/user/join">회원가입</a></h3>
-  <h3><a href="/user/login">로그인</a></h3>
+  <h3><a href="/join">회원가입</a></h3>
+  <h3><a href="/session/login">로그인</a></h3>
 <% end %>
 
 
@@ -19,9 +19,9 @@
       <% post_user_id = post.user.id %>
       <% if @user && @user.id != post_user_id %>
         <% if @user.followings.detect {|following| following.id == post_user_id } %>
-          <%= link_to "언팔로우", "/user/#{post_user_id}/unfollow", method: :post %>
+          <%= link_to "언팔로우", "/unfollow/#{post_user_id}", method: :post %>
         <% else %>
-          <%= link_to "팔로우", "/user/#{post_user_id}/follow", method: :post %>
+          <%= link_to "팔로우", "/follow/#{post_user_id}", method: :post %>
         <% end %>
       <% end %>
     </h3>

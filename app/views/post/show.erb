@@ -16,9 +16,9 @@
 <% if session[:user_id] %>
 
   <% if @post.likes.detect { |like| like.user_id == session[:user_id] } %>
-    <h4><%= link_to '좋아요 취소', "/post/#{@post.id}/unlike", method: :post %></h4>
+    <h4><%= link_to '좋아요 취소', "/unlike/#{@post.id}", method: :post %></h4>
   <% else %>
-    <h4><%= link_to '좋아요 누르기', "/post/#{@post.id}/like", method: :post %></h4>
+    <h4><%= link_to '좋아요 누르기', "/like/#{@post.id}", method: :post %></h4>
   <% end %>
 
   <% if session[:user_id] == @post.user_id %>
