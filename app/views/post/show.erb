@@ -24,7 +24,6 @@
   <% if session[:user_id] == @post.user_id %>
     <a href="/post/<%= @post.id %>/edit">수정하기</a>
     <%= link_to "삭제하기", "/post/#{@post.id}", method: :delete %>
-    <%= link_to "삭제하기(임시)", "/post/#{@post.id}/delete", method: :delete %>
 
   <% end %>
 <% end %>

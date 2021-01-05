@@ -12,6 +12,7 @@ class PostController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
@@ -53,7 +54,7 @@ class PostController < ApplicationController
   def set_post
     @post = Post.find_by(id: params[:id])
 
-    redirect_to '/' if session[:user_id] != @post.user_id
+    redirect_to '/' if @post.nil? || session[:user_id] != @post.user_id
   end
 
   def post_params

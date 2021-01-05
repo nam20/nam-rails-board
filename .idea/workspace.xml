@@ -2,35 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34020aef-e243-4acb-9aca-61580b5d7d94" name="디폴트 변경 목록" comment="">
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/follow.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/join.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/like.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/assets/stylesheets/session.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/follow_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/join_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/like_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/controllers/session_controller.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/follow_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/join_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/like_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/helpers/session_helper.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/follow_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/join_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/like_controller_test.rb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/controllers/session_controller_test.rb" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/views/post/_form.html.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/comment_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/comment_controller.rb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/controllers/post_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/post_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/post/new.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/post/new.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/views/post/show.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/post/show.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/user/join.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/join/join.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/user/login.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/session/login.erb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20201228045345_create_users.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/migrate/20201228045345_create_users.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20210103060523_create_follows.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,6 +82,9 @@
       <workItem from="1609217967534" duration="11333000" />
       <workItem from="1609232965993" duration="167000" />
       <workItem from="1609286392341" duration="10598000" />
+      <workItem from="1609805387530" duration="3318000" />
+      <workItem from="1609811027085" duration="118000" />
+      <workItem from="1609811441948" duration="523000" />
     </task>
     <servers />
   </component>
