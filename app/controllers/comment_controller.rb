@@ -7,17 +7,18 @@ class CommentController < ApplicationController
     post = Post.find_by(id: params[:post_id])
 
     if post.nil?
-      redirect_to '/'
+      redirect_to root_path
       return
     end
 
     comment = Comment.new
 
+
     if params[:comment_id]
       parent_comment = Comment.find_by(id: params[:comment_id])
 
       if parent_comment.nil?
-        redirect_to '/'
+        redirect_to root_path
         return
       end
 
@@ -46,26 +47,27 @@ class CommentController < ApplicationController
 
     comment.save
 
-    redirect_to "/post/#{params[:post_id]}"
+    redirect_to post_path(params[:post_id])
   end
 
   def delete
 
-    comment = Comment.find_by(id: params[:id])
+    comment = Comment.find_by(id: params[:comment_id])
 
     if comment.nil? || session[:user_id] != comment.user_id
-      redirect_to '/'
+      redirect_to root_path
       return
     end
 
     comment.update(is_deleted: true)
 
-    redirect_to "/post/#{comment.post_id}"
+    redirect_to post_path(comment.post_id)
   end
 
   private
 
   def authenticate_user
-    redirect_to '/' if session[:user_id].nil?
+    redirect_to root_path if session[:user_id].nil?
   end
+
 end

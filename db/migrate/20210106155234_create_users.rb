@@ -7,8 +7,6 @@ class CreateUsers < ActiveRecord::Migration[6.1]
       t.boolean :is_deleted
 
       t.timestamps
-
     end
   end
-
 end

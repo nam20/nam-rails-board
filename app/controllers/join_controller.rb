@@ -3,16 +3,19 @@ class JoinController < ApplicationController
   before_action :not_authenticate_user, only: [:join, :create]
 
   def join
+    @user = User.new
   end
 
   def create
 
-    if User.find_by(name: params[:name])
+    @user_params = user_params
+
+    if User.find_by(name: @user_params[:name])
       redirect_to '/join'
       return
     end
 
-    user = User.new(user_params)
+    user = User.new(@user_params)
     user.is_deleted = false
 
 
@@ -32,6 +35,6 @@ class JoinController < ApplicationController
   end
 
   def user_params
-    params.permit(:name, :email, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :password, :password_confirmation)
   end
 end

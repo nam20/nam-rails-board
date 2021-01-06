@@ -1,10 +1,30 @@
 <br>
-<form action="/join" method="post">
-  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
-  <h2><input type="text" name="name" placeholder="네임"></h2>
-  <h2><input type="email" name="email" placeholder="메일"></h2>
-  <h2><input type="password" name="password" placeholder="패스워드"></h2>
-  <h2><input type="password" name="password_confirmation" placeholder="패스워드 확인"></h2>
-  <h2><input type="submit"></h2>
-</form>
-<h3><a href="/">홈</a></h3>
+
+<%= form_with(model: @user, url: join_path, method: :post) do |form| %>
+
+  <div>
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+  <div>
+    <%= form.label :email %>
+    <%= form.email_field :email %>
+  </div>
+  <div>
+    <%= form.label :password %>
+    <%= form.password_field :password %>
+  </div>
+
+  <div>
+    <%= form.label :password_confirmation %>
+    <%= form.password_field :password_confirmation %>
+  </div>
+
+  <div>
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+
+<h3><%= link_to "홈", root_path %></h3>

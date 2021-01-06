@@ -5,7 +5,7 @@ class LikeController < ApplicationController
   def like
 
     if Like.find_by(user_id: session[:user_id], post_id: params[:id])
-      redirect_to '/'
+      redirect_to root_path
       return
     end
 
@@ -14,7 +14,7 @@ class LikeController < ApplicationController
     like.post_id = params[:id]
     like.save
 
-    redirect_to "/post/#{params[:id]}"
+    redirect_to post_path(params[:id])
 
   end
 
@@ -27,12 +27,12 @@ class LikeController < ApplicationController
 
     Like.destroy(like.id)
 
-    redirect_to "/post/#{params[:id]}"
+    redirect_to post_path(params[:id])
   end
 
   private
 
   def authenticate_user
-    redirect_to '/' if session[:user_id].nil?
+    redirect_to root_path if session[:user_id].nil?
   end
 end
