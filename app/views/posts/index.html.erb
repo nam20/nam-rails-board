@@ -1,23 +1,14 @@
-<br>
-<% if @current_user %>
-  <h3><%= link_to "글쓰기", new_post_path %></h3>
-  <h3><%= link_to "로그아웃", logout_path, method: :delete %></h3>
-  <h3><%= "접속 유저 이름: #{@current_user.name}" %></h3>
-  <h3><%= "팔로워: #{@current_user.followers.size} 팔로잉: #{@current_user.followings.size}" %></h3>
-<% else %>
-  <h3><%= link_to "회원가입", join_path %></h3>
-  <h3><%= link_to "로그인", login_path %></h3>
-<% end %>
 
-<hr>
+<h3><%= link_to "글쓰기", new_post_path if user_signed_in? %></h3>
+
 <% @posts.each do |post| %>
-  <% if post.user.is_deleted %>
+  <% if post.user.discarded? %>
     <h3>(탈퇴한 유저)</h3>
   <% else %>
     <h3>글쓴이: <%= post.user.name %>
       <% post_user_id = post.user.id %>
-      <% if @current_user && @current_user.id != post_user_id %>
-        <% if @current_user.followings.detect {|following| following.id == post_user_id } %>
+      <% if user_signed_in? && current_user.id != post_user_id %>
+        <% if current_user.followings.detect {|following| following.id == post_user_id } %>
           <%= link_to "언팔로우", "/follow/#{post_user_id}", method: :delete %>
         <% else %>
           <%= link_to "팔로우", "/follow/#{post_user_id}", method: :post %>

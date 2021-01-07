@@ -1,6 +1,6 @@
-class CommentController < ApplicationController
+class CommentsController < ApplicationController
 
-  before_action :authenticate_user, only: [:create, :delete]
+  before_action :authenticate_user!
 
   def create
 
@@ -12,7 +12,6 @@ class CommentController < ApplicationController
     end
 
     comment = Comment.new
-
 
     if params[:comment_id]
       parent_comment = Comment.find_by(id: params[:comment_id])
@@ -41,9 +40,8 @@ class CommentController < ApplicationController
     end
 
     comment.content = params[:content]
-    comment.user_id = session[:user_id]
-    comment.post_id = post.id
-    comment.is_deleted = false
+    comment.user = current_user
+    comment.post = post
 
     comment.save
 
@@ -54,20 +52,14 @@ class CommentController < ApplicationController
 
     comment = Comment.find_by(id: params[:comment_id])
 
-    if comment.nil? || session[:user_id] != comment.user_id
+    if comment.nil? || current_user.id != comment.user_id
       redirect_to root_path
       return
     end
 
-    comment.update(is_deleted: true)
+    comment.discard
 
     redirect_to post_path(comment.post_id)
-  end
-
-  private
-
-  def authenticate_user
-    redirect_to root_path if session[:user_id].nil?
   end
 
 end

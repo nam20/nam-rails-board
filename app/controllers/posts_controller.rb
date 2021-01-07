@@ -1,12 +1,11 @@
 class PostsController < ApplicationController
 
-  before_action :authenticate_user, only: [:new, :create, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy]
   before_action :set_post, only: [:edit, :update, :destroy]
 
 
   def index
-    @posts = Post.includes(:user, :likes).where(is_deleted: false).order(created_at: :desc)
-    @current_user = User.includes(:followings, :followers).find(session[:user_id]) if session[:user_id]
+    @posts = Post.kept.includes(:user, :likes).order(created_at: :desc)
   end
 
   def show
@@ -24,9 +23,7 @@ class PostsController < ApplicationController
   def create
 
     post = Post.new(post_params)
-
-    post.user_id = session[:user_id]
-    post.is_deleted = false
+    post.user = current_user
 
     post.save
 
@@ -45,22 +42,18 @@ class PostsController < ApplicationController
 
   def destroy
 
-    @post.update(is_deleted: true)
+    @post.discard
 
-    redirect_to root_path
+    redirect_to root_path, notice: "Post removed"
   end
 
 
   private
 
-  def authenticate_user
-    redirect_to root_path if session[:user_id].nil?
-  end
-
   def set_post
     @post = Post.find_by(id: params[:id])
 
-    redirect_to root_path if @post.nil? || session[:user_id] != @post.user_id
+    redirect_to root_path if @post.nil? || current_user.id != @post.user_id
   end
 
   def post_params

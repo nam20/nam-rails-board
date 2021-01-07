@@ -1,5 +1,9 @@
 class User < ApplicationRecord
-  has_secure_password
+  include Discard::Model
+  # Include default devise modules. Others available are:
+  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :validatable
 
   has_many :posts
 
@@ -13,5 +17,4 @@ class User < ApplicationRecord
 
   has_many :received_follows, foreign_key: :following_id, class_name: "Follow"
   has_many :followers, through: :received_follows, source: :follower
-
 end

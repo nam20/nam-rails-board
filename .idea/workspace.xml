@@ -2,32 +2,37 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="34020aef-e243-4acb-9aca-61580b5d7d94" name="디폴트 변경 목록" comment="">
-      <change afterPath="$PROJECT_DIR$/app/views/posts/edit.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/posts/index.html.erb" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/views/posts/new.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Gemfile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/Gemfile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/assets/stylesheets/post.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/assets/stylesheets/post.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/comment_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/comment_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/follow_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/follow_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/home_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/join_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/join_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/like_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/like_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/post_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/session_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/session_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/user_controller.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/home/index.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/join/join.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/join/join.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/post/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/_form.html.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/post/edit.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/post/new.erb" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/post/show.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/show.erb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/views/session/login.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/session/login.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/application_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/application_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/comment_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/comments_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/follow_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/follows_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/home_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/join_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/like_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/likes_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/posts_controller.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/controllers/posts_controller.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/session_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/controllers/user_controller.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/comment.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/comment.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/post.rb" beforeDir="false" afterPath="$PROJECT_DIR$/app/models/post.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/models/user.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/home/index.html.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/join/join.erb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/layouts/application.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/layouts/application.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/_form.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/_form.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/edit.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/edit.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/index.html.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/index.html.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/new.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/new.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/posts/show.erb" beforeDir="false" afterPath="$PROJECT_DIR$/app/views/posts/show.erb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/views/session/login.erb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/config/routes.rb" beforeDir="false" afterPath="$PROJECT_DIR$/config/routes.rb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/db/migrate/20201228045345_create_users.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201228051220_create_posts.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20201229012449_create_comments.rb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/db/migrate/20210106155234_create_users.rb" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/db/schema.rb" beforeDir="false" afterPath="$PROJECT_DIR$/db/schema.rb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/fixtures/users.yml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/models/user_test.rb" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,7 +43,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1mGrMBCf08F1n2FT4w1VOo57Jq7" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -55,6 +62,7 @@
       <recent name="$PROJECT_DIR$/db/migrate" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\projects\ruby\nam-rails-board\db\migrate" />
       <recent name="$PROJECT_DIR$/app/views/join" />
       <recent name="$PROJECT_DIR$/app/views/session" />
     </key>
@@ -118,5 +126,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

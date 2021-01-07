@@ -1,28 +1,20 @@
 Rails.application.routes.draw do
 
+  devise_for :users, controllers: { registrations: 'registrations', sessions: 'sessions' }
   resources :posts
 
   root 'posts#index'
 
-  get '/join' => 'join#join'
-  post '/join' => 'join#create'
+  post '/follow/:id' => 'follows#follow'
+  delete '/follow/:id' => 'follows#unfollow'
 
 
-  get '/login' => 'session#login'
-  post '/login' => 'session#find'
-  delete '/logout' => 'session#logout'
+  post '/posts/:id/like' => 'likes#like'
+  delete '/posts/:id/like' => 'likes#unlike'
 
 
-  post '/follow/:id' => 'follow#follow'
-  delete '/follow/:id' => 'follow#unfollow'
-
-
-  post '/posts/:id/like' => 'like#like'
-  delete '/posts/:id/like' => 'like#unlike'
-
-
-  post '/posts/:post_id/comment' => 'comment#create'
-  delete '/posts/:post_id/comment/:comment_id' => 'comment#delete'
+  post '/posts/:post_id/comment' => 'comments#create'
+  delete '/posts/:post_id/comment/:comment_id' => 'comments#delete'
 
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
