@@ -5,15 +5,22 @@ class PostsController < ApplicationController
 
 
   def index
-    @posts = Post.kept.includes(:user, :likes).order(created_at: :desc)
+    @posts = Post
+                 .kept
+                 .paginate(page: params[:page], per_page: 3)
+                 .includes(:user, :likes)
+                 .order(created_at: :desc)
   end
 
   def show
     @post = Post.includes(:user).find(params[:id])
 
-    @post.comments = Comment.includes(:user)
-                            .where( post_id: params[:id] )
-                            .order(group_id: :desc , group_order: :asc)
+    @comments = Comment
+                       .where( post_id: params[:id] )
+                       .paginate(page: params[:page], per_page: 3)
+                       .includes(:user)
+                       .order(group_id: :desc , group_order: :asc)
+
   end
 
   def new

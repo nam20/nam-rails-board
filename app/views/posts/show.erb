@@ -38,7 +38,7 @@
 
 <hr>
 
-<% @post.comments.each do |comment| %>
+<% @comments.each do |comment| %>
   <h4>
     <%= "=>" * (comment.depth)  %>
     <% if comment.discarded?  %>
@@ -68,7 +68,8 @@
         <% end %>
       <% end %>
     <% end %>
-
   </h4>
   <hr>
 <% end %>
+
+<%= will_paginate(@comments, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer) %>
